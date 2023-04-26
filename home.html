@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Predicciones Random</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <div class="card text-center">
+            <div class="card-header">
+                <h1>Predicciones Random</h1>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Presiona el botón para generar una predicción complementamente random:</h5>
+                <p class="card-text" id="prediccion"></p>
+                <button type="button" class="btn btn-success" onclick="generarPrediccion()">Generar Predicción</button>
+                <div class="mt-4">
+                    <a href="#" onclick="compartirTwitter()" class="btn btn-primary"><i class="fab fa-twitter"></i>
+                        Compartir en Twitter</a>
+                    <a href="#" onclick="compartirInstagram()" class="btn btn-danger"><i class="fab fa-instagram"></i>
+                        Compartir en Instagram</a>
+                    <a href="#" onclick="compartirFacebook()" class="btn btn-primary"><i class="fab fa-facebook"></i>
+                        Compartir en Facebook</a>
+                    <a href="#" onclick="compartirWhatsApp()" class="btn btn-success"><i class="fab fa-whatsapp"></i>
+                        Compartir en WhatsApp</a>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                © 2023 EmanuelHG
+            </div>
+        </div>
+    </div>
+    <script>
+        function generarPrediccion() {
+            // Lista de predicciones
+            var predicciones = [
+                "En los próximos días, tendrás una sorpresa agradable que te llenará de alegría.",
+                "Una nueva oportunidad de trabajo o negocio se presentará en tu vida, y será prometedora.",
+                "En el amor, experimentarás una fase de romanticismo y conexión emocional profunda con tu pareja.",
+                "Pronto tendrás la oportunidad de viajar a un lugar que siempre has deseado visitar.",
+                "Te encontrarás con una persona del pasado que te brindará una nueva perspectiva o una oportunidad interesante.",
+                "Tu creatividad y expresión artística estarán en un punto alto, lo que te permitirá destacarte en tus proyectos.",
+                "En tu vida financiera, experimentarás una mejora significativa o una nueva fuente de ingresos.",
+                "Una amistad cercana te necesitará para brindarle apoyo emocional y consejos sabios.",
+                "Pronto tendrás la oportunidad de aprender algo nuevo o adquirir una nueva habilidad que te beneficiará en el futuro.",
+                "Una situación que has estado esperando se resolverá de manera positiva, trayendo alivio y satisfacción.",
+                "Un cambio inesperado en tu rutina diaria te abrirá a nuevas experiencias y oportunidades.",
+                "En el amor, es posible que experimentes altibajos emocionales, pero al final encontrarás la estabilidad y la armonía.",
+                "Pronto recibirás noticias emocionantes de un miembro de la familia o de un amigo cercano.",
+                "Una situación complicada en el trabajo se resolverá de manera satisfactoria, brindándote un nuevo sentido de éxito y logro.",
+                "Tu intuición estará en su punto máximo, lo que te permitirá tomar decisiones acertadas y evitar errores.",
+                "Un viaje o aventura emocionante se presentará en tu camino, brindándote nuevas experiencias y recuerdos inolvidables.",
+                "Pronto tendrás la oportunidad de ayudar a alguien en necesidad, lo que te llenará de satisfacción y gratitud.",
+                "Una situación financiera complicada se resolverá de manera positiva, brindándote estabilidad y seguridad.",
+                "Te sentirás inspirado y motivado para perseguir tus metas y sueños con determinación y pasión.",
+                "Una reconciliación con alguien importante en tu vida te permitirá sanar heridas del pasado y avanzar en armonía."
+            ];
+
+            // Obtener un índice aleatorio para seleccionar una predicción
+            var indiceAleatorio = Math.floor(Math.random() * predicciones.length);
+            // Mostrar la predicción en el elemento con id "prediccion"
+            document.getElementById("prediccion").innerHTML = predicciones[indiceAleatorio];
+        }
+
+        function compartirTwitter() {
+            var prediccion = document.getElementById("prediccion").innerText;
+            window.open("https://twitter.com/intent/tweet?text=" + prediccion);
+        }
+
+        function compartirInstagram() {
+            var prediccion = document.getElementById("prediccion").innerText;
+            window.open("https://www.instagram.com/?text=" + prediccion);
+        }
+
+        function compartirFacebook() {
+            var prediccion = document.getElementById("prediccion").innerText;
+            window.open("https://www.facebook.com/sharer/sharer.php?u=&quote=" + prediccion);
+        }
+
+        function compartirWhatsApp() {
+            var prediccion = document.getElementById("prediccion").innerText;
+            window.open("https://wa.me/?text=" + prediccion);
+        }
+    </script>
+
+</body>
