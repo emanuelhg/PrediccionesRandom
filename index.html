@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://kit.fontawesome.com/06909fba27.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -22,10 +22,11 @@
             <div class="card-body">
                 <h5 class="card-title">Presiona el botón para generar una predicción completamente random:</h5>
                 <p class="card-text" id="prediccion"></p>
-                <button type="button" class="btn btn-success" onclick="generarPrediccion()">Generar</button>
+                <button type="button" class="btn btn-success" onclick="generarPrediccion()">Generar</button>  
                 <div class="mt-4">
+                    <div>Compartir:</div>
                     <a href="#" onclick="compartirTwitter()" class="btn btn-primary"><i class="fab fa-twitter"></i></a>
-                    <a href="#" onclick="compartirInstagram()" class="btn btn-danger"><i class="fab fa-instagram"></i></a>
+                    <a href="#" onclick="compartirInstagram()" class="btn btn-danger"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#" onclick="compartirFacebook()" class="btn btn-primary"><i class="fab fa-facebook"></i></a>
                     <a href="#" onclick="compartirWhatsApp()" class="btn btn-success"><i class="fab fa-whatsapp"></i></a>
                 </div>
