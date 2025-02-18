@@ -1,6 +1,7 @@
 # Predicciones Random
 
 Este es un sitio web simple que genera predicciones aleatorias según una categoría seleccionada por el usuario.
+
 🚀 Características
 
     ✅ Generación de predicciones aleatorias en cuatro categorías: General, Amor, Trabajo y Dinero.
