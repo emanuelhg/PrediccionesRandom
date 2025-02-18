@@ -1,4 +1,4 @@
-Predicciones Random
+# Predicciones Random
 
 Este es un sitio web simple que genera predicciones aleatorias según una categoría seleccionada por el usuario.
 🚀 Características
