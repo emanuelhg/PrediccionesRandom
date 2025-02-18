@@ -1,92 +1,206 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="es">
 <head>
-    <title>Predicciones Random</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Predicciones Random</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/06909fba27.js" crossorigin="anonymous"></script>
+    <style>
+        body.dark-mode { background-color: #121212; color: white; }
+        .dark-mode .card-header, .dark-mode .card-body, .dark-mode .card-footer { background-color: #1e1e1e; color: white; }
+        .btn.dark-mode { background-color: #333; color: white; }
+        .fade-in { animation: fadeIn 1s; }
+        .text-dark-mode { color: white !important; }
+        .hidden { display: none; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .card-header h1 { width: 100%; text-align: center; }
+        #prediccion-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #prediccion-img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+        .dark-mode #prediccion-container { background: #333; color: white; }
+        .toggle-container {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
-
 <body>
-
     <div class="container mt-5">
-        <div class="card text-center">
-            <div class="card-header">
-                <h1>Predicciones Random</h1>
+        <div class="toggle-container">
+            <button class="btn btn-dark" onclick="toggleDarkMode()"><i id="darkModeIcon" class="fas fa-moon"></i></button>
+        </div>
+        <div class="card text-center" id="cardContainer">
+            <div class="card-header" id="header">
+                <h1 id="title">Predicciones Random</h1>
             </div>
-            <div class="card-body">
-                <h5 class="card-title">Presiona el botón para generar una predicción completamente random:</h5>
-                <p class="card-text" id="prediccion"></p>
+            <div class="card-body" id="bodyCard">
+                <h5 class="card-title">Ingresá tu nombre:</h5>
+                <input type="text" id="nombreUsuario" class="form-control mb-3" placeholder="Tu nombre aquí">
+                <h5 class="card-title">Elige una categoría:</h5>
+                <select id="categoria" class="form-control mb-3">
+                    <option value="general">General</option>
+                    <option value="amor">Amor</option>
+                    <option value="trabajo">Trabajo</option>
+                    <option value="dinero">Dinero</option>
+                </select>
                 <button type="button" class="btn btn-success" onclick="generarPrediccion()">Generar</button>  
-                <div class="mt-4">
-                    <div>Compartir:</div>
-                    <a href="#" onclick="compartirTwitter()" class="btn btn-primary"><i class="fab fa-twitter"></i></a>
-                    <a href="#" onclick="compartirInstagram()" class="btn btn-danger"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" onclick="compartirFacebook()" class="btn btn-primary"><i class="fab fa-facebook"></i></a>
-                    <a href="#" onclick="compartirWhatsApp()" class="btn btn-success"><i class="fab fa-whatsapp"></i></a>
+                
+                <div id="prediccion-container">
+                    <img id="prediccion-img" src="https://cdn-icons-png.flaticon.com/512/189/189792.png" alt="Cargando...">
+                    <p id="prediccion" class="fade-in">Generando predicción...</p>
                 </div>
             </div>
-            <div class="card-footer text-muted">
-                © 2023 EmanuelHG
-            </div>
+            <div class="card-footer text-muted" id="footerCard">© 2025 EmanuelHG - v.2.0</div>
         </div>
     </div>
     <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            let icon = document.getElementById("darkModeIcon");
+            icon.classList.toggle("fa-moon");
+            icon.classList.toggle("fa-sun");
+        }
+        
+        const predicciones = {
+            general: [
+                "{nombre}, hoy recibirás una noticia que cambiará tu perspectiva.",
+                "{nombre}, alguien que no ves hace tiempo se cruzará en tu camino.",
+                "{nombre}, un pequeño reto pondrá a prueba tu paciencia.",
+                "{nombre}, una nueva oportunidad te abrirá puertas inesperadas.",
+                "{nombre}, confía en tu intuición, hoy será clave.",
+                "{nombre}, un gesto amable cambiará tu día y el de alguien más.",
+                "{nombre}, puede que te enfrentes a una decisión difícil, piensa bien antes de actuar.",
+                "{nombre}, un consejo de alguien mayor te será útil hoy.",
+                "{nombre}, un cambio en tu rutina traerá algo positivo.",
+                "{nombre}, algo que dabas por perdido volverá a ti.",
+                "{nombre}, hoy tendrás una conversación que te dejará pensando.",
+                "{nombre}, podrías encontrar un objeto que creías extraviado.",
+                "{nombre}, una coincidencia llamará tu atención y te hará sonreír.",
+                "{nombre}, un nuevo interés o pasatiempo despertará tu curiosidad.",
+                "{nombre}, un comentario inesperado te hará replantear algo importante.",
+                "{nombre}, una pequeña dificultad en la mañana se resolverá por la tarde.",
+                "{nombre}, una persona desconocida podría darte un buen consejo.",
+                "{nombre}, hoy es un día ideal para cerrar un ciclo pendiente.",
+                "{nombre}, recibirás un mensaje que cambiará tu estado de ánimo.",
+                "{nombre}, un recuerdo del pasado te hará reflexionar sobre el presente."
+            ],
+            amor: [
+                "{nombre}, alguien en quien no habías pensado está empezando a notar tu presencia.",
+                "{nombre}, un malentendido en el amor se aclarará pronto.",
+                "{nombre}, una conversación reveladora te hará ver las cosas de otra manera.",
+                "{nombre}, si tienes dudas sobre una relación, el tiempo te dará respuestas.",
+                "{nombre}, el amor puede sorprenderte cuando menos lo esperas.",
+                "{nombre}, una persona cercana te mostrará su apoyo incondicional.",
+                "{nombre}, evita reacciones impulsivas en temas sentimentales hoy.",
+                "{nombre}, un reencuentro inesperado te traerá emociones mezcladas.",
+                "{nombre}, si buscas señales, presta atención a los detalles.",
+                "{nombre}, alguien especial está esperando que des el primer paso.",
+                "{nombre}, una llamada cambiará el rumbo de tus sentimientos.",
+                "{nombre}, hoy podrías recibir una confesión inesperada.",
+                "{nombre}, una persona de tu entorno te observa con más interés del que imaginas.",
+                "{nombre}, en el amor, la paciencia será clave hoy.",
+                "{nombre}, evita comparar tu historia con la de los demás.",
+                "{nombre}, una decisión tomada hoy influirá en tu futuro sentimental.",
+                "{nombre}, alguien espera que muestres tus sentimientos con más claridad.",
+                "{nombre}, hoy podrías recibir una indirecta muy evidente.",
+                "{nombre}, un gesto romántico iluminará tu jornada.",
+                "{nombre}, el amor a veces llega cuando dejas de buscarlo."
+            ],
+            trabajo: [
+                "{nombre}, un nuevo reto en el trabajo pondrá a prueba tus habilidades.",
+                "{nombre}, hoy podrías recibir un reconocimiento inesperado.",
+                "{nombre}, evita distracciones y concéntrate en lo importante.",
+                "{nombre}, una propuesta laboral interesante llegará pronto.",
+                "{nombre}, un cambio de planes podría beneficiarte más de lo que imaginas.",
+                "{nombre}, podrías sentirte abrumado, pero encontrarás apoyo en un colega.",
+                "{nombre}, revisa bien los detalles antes de presentar un proyecto.",
+                "{nombre}, no subestimes el poder del trabajo en equipo.",
+                "{nombre}, si estás esperando una respuesta laboral, pronto llegará una señal clara.",
+                "{nombre}, el esfuerzo de hoy traerá recompensas en el futuro.",
+                "{nombre}, evita decisiones apresuradas en el ámbito profesional.",
+                "{nombre}, un error menor te enseñará una lección valiosa.",
+                "{nombre}, alguien valorará tu dedicación más de lo que imaginas.",
+                "{nombre}, una nueva responsabilidad podría traerte un desafío interesante.",
+                "{nombre}, una conversación con un superior aclarará tus dudas.",
+                "{nombre}, una reunión inesperada abrirá nuevas oportunidades.",
+                "{nombre}, podrías notar que alguien en el trabajo admira tu esfuerzo.",
+                "{nombre}, revisa bien los números antes de tomar una decisión económica.",
+                "{nombre}, una idea que tenías podría empezar a tomar forma hoy.",
+                "{nombre}, el ambiente laboral será un factor clave en tu productividad."
+            ],
+            dinero: [
+                "{nombre}, revisa bien tus gastos antes de hacer una compra importante.",
+                "{nombre}, un ingreso inesperado podría mejorar tu día.",
+                "{nombre}, evita hacer inversiones impulsivas hoy.",
+                "{nombre}, una oportunidad económica interesante se presentará pronto.",
+                "{nombre}, alguien te dará un consejo financiero valioso.",
+                "{nombre}, controla mejor tu presupuesto, podrías ahorrar más de lo que crees.",
+                "{nombre}, un error en tus cuentas podría causarte un pequeño problema.",
+                "{nombre}, si debes dinero, pronto podrías encontrar la manera de saldarlo.",
+                "{nombre}, evita prestar dinero sin garantías hoy.",
+                "{nombre}, una oferta tentadora podría no ser lo que parece.",
+                "{nombre}, una compra impulsiva podría traerte arrepentimiento.",
+                "{nombre}, un pequeño sacrificio financiero hoy te dará frutos mañana.",
+                "{nombre}, podrías recibir una ayuda económica de una fuente inesperada.",
+                "{nombre}, evita los gastos innecesarios en cosas superficiales.",
+                "{nombre}, un análisis detallado de tus cuentas te dará claridad.",
+                "{nombre}, podrías descubrir una nueva fuente de ingresos.",
+                "{nombre}, hoy es un buen día para organizar tu economía.",
+                "{nombre}, un viejo hábito financiero podría traerte problemas si no lo controlas.",
+                "{nombre}, evita firmar acuerdos financieros sin leer la letra pequeña.",
+                "{nombre}, una conversación sobre dinero te hará replantear tus prioridades."
+            ]
+        };
+
+        const imagenesCategorias = {
+            general: "https://cdn-icons-png.flaticon.com/512/12282/12282443.png",
+            amor: "https://cdn-icons-png.flaticon.com/512/9484/9484251.png",
+            trabajo: "https://cdn-icons-png.flaticon.com/512/3281/3281289.png",
+            dinero: "https://cdn-icons-png.flaticon.com/512/639/639365.png"
+        };
+        
         function generarPrediccion() {
-            // Lista de predicciones
-            var predicciones = [
-                "En los próximos días, tendrás una sorpresa agradable que te llenará de alegría.",
-                "Una nueva oportunidad de trabajo o negocio se presentará en tu vida, y será prometedora.",
-                "En el amor, experimentarás una fase de romanticismo y conexión emocional profunda con tu pareja.",
-                "Pronto tendrás la oportunidad de viajar a un lugar que siempre has deseado visitar.",
-                "Te encontrarás con una persona del pasado que te brindará una nueva perspectiva o una oportunidad interesante.",
-                "Tu creatividad y expresión artística estarán en un punto alto, lo que te permitirá destacarte en tus proyectos.",
-                "En tu vida financiera, experimentarás una mejora significativa o una nueva fuente de ingresos.",
-                "Una amistad cercana te necesitará para brindarle apoyo emocional y consejos sabios.",
-                "Pronto tendrás la oportunidad de aprender algo nuevo o adquirir una nueva habilidad que te beneficiará en el futuro.",
-                "Una situación que has estado esperando se resolverá de manera positiva, trayendo alivio y satisfacción.",
-                "Un cambio inesperado en tu rutina diaria te abrirá a nuevas experiencias y oportunidades.",
-                "En el amor, es posible que experimentes altibajos emocionales, pero al final encontrarás la estabilidad y la armonía.",
-                "Pronto recibirás noticias emocionantes de un miembro de la familia o de un amigo cercano.",
-                "Una situación complicada en el trabajo se resolverá de manera satisfactoria, brindándote un nuevo sentido de éxito y logro.",
-                "Tu intuición estará en su punto máximo, lo que te permitirá tomar decisiones acertadas y evitar errores.",
-                "Un viaje o aventura emocionante se presentará en tu camino, brindándote nuevas experiencias y recuerdos inolvidables.",
-                "Pronto tendrás la oportunidad de ayudar a alguien en necesidad, lo que te llenará de satisfacción y gratitud.",
-                "Una situación financiera complicada se resolverá de manera positiva, brindándote estabilidad y seguridad.",
-                "Te sentirás inspirado y motivado para perseguir tus metas y sueños con determinación y pasión.",
-                "Una reconciliación con alguien importante en tu vida te permitirá sanar heridas del pasado y avanzar en armonía."
-            ];
-
-            // Obtener un índice aleatorio para seleccionar una predicción
-            var indiceAleatorio = Math.floor(Math.random() * predicciones.length);
-            // Mostrar la predicción en el elemento con id "prediccion"
-            document.getElementById("prediccion").innerHTML = predicciones[indiceAleatorio];
-        }
-
-        function compartirTwitter() {
-            var prediccion = document.getElementById("prediccion").innerText;
-            window.open("https://twitter.com/intent/tweet?text=" + prediccion);
-        }
-
-        function compartirInstagram() {
-            var prediccion = document.getElementById("prediccion").innerText;
-            window.open("https://www.instagram.com/?text=" + prediccion);
-        }
-
-        function compartirFacebook() {
-            var prediccion = document.getElementById("prediccion").innerText;
-            window.open("https://www.facebook.com/sharer/sharer.php?u=&quote=" + prediccion);
-        }
-
-        function compartirWhatsApp() {
-            var prediccion = document.getElementById("prediccion").innerText;
-            window.open("https://wa.me/?text=" + prediccion);
+            const nombre = document.getElementById("nombreUsuario").value || "Visitante";
+            const categoria = document.getElementById("categoria").value;
+            let prediccionElemento = document.getElementById("prediccion");
+            let imagenElemento = document.getElementById("prediccion-img");
+            let prediccionContainer = document.getElementById("prediccion-container");
+            
+            prediccionContainer.style.display = "block";
+            prediccionContainer.style.opacity = "1";
+            imagenElemento.src = "https://cdn-icons-png.flaticon.com/512/189/189792.png";
+            
+            let dotsIndex = 0;
+            let dotsArray = [".", "..", "..."];
+            let interval = setInterval(() => {
+                prediccionElemento.innerText = "Generando predicción" + dotsArray[dotsIndex];
+                dotsIndex = (dotsIndex + 1) % dotsArray.length;
+            }, 500);
+            
+            setTimeout(() => {
+                clearInterval(interval);
+                let prediccion = predicciones[categoria][Math.floor(Math.random() * predicciones[categoria].length)].replace("{nombre}", nombre);
+                prediccionElemento.innerText = prediccion;
+                imagenElemento.src = imagenesCategorias[categoria];
+            }, 2500);
         }
     </script>
-
 </body>
+</html>
