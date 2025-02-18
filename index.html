@@ -35,10 +35,23 @@
             margin-bottom: 10px;
         }
         .dark-mode #prediccion-container { background: #333; color: white; }
+        
         .toggle-container {
             text-align: right;
             margin-bottom: 10px;
         }
+        
+        .header-image {
+            width: 25%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 900px) {
+            .header-image { width: 75%; }
+        }
+        
+        
     </style>
 </head>
 <body>
@@ -51,6 +64,7 @@
                 <h1 id="title">Predicciones Random</h1>
             </div>
             <div class="card-body" id="bodyCard">
+                <img src="media/predicciones.png" alt="Predicciones Random" class="header-image">
                 <h5 class="card-title">Ingresá tu nombre:</h5>
                 <input type="text" id="nombreUsuario" class="form-control mb-3" placeholder="Tu nombre aquí">
                 <h5 class="card-title">Elige una categoría:</h5>
@@ -80,95 +94,95 @@
         
         const predicciones = {
             general: [
-                "{nombre}, hoy recibirás una noticia que cambiará tu perspectiva.",
-                "{nombre}, alguien que no ves hace tiempo se cruzará en tu camino.",
-                "{nombre}, un pequeño reto pondrá a prueba tu paciencia.",
-                "{nombre}, una nueva oportunidad te abrirá puertas inesperadas.",
-                "{nombre}, confía en tu intuición, hoy será clave.",
-                "{nombre}, un gesto amable cambiará tu día y el de alguien más.",
-                "{nombre}, puede que te enfrentes a una decisión difícil, piensa bien antes de actuar.",
-                "{nombre}, un consejo de alguien mayor te será útil hoy.",
-                "{nombre}, un cambio en tu rutina traerá algo positivo.",
-                "{nombre}, algo que dabas por perdido volverá a ti.",
-                "{nombre}, hoy tendrás una conversación que te dejará pensando.",
-                "{nombre}, podrías encontrar un objeto que creías extraviado.",
-                "{nombre}, una coincidencia llamará tu atención y te hará sonreír.",
-                "{nombre}, un nuevo interés o pasatiempo despertará tu curiosidad.",
-                "{nombre}, un comentario inesperado te hará replantear algo importante.",
-                "{nombre}, una pequeña dificultad en la mañana se resolverá por la tarde.",
-                "{nombre}, una persona desconocida podría darte un buen consejo.",
-                "{nombre}, hoy es un día ideal para cerrar un ciclo pendiente.",
-                "{nombre}, recibirás un mensaje que cambiará tu estado de ánimo.",
-                "{nombre}, un recuerdo del pasado te hará reflexionar sobre el presente."
+            "{nombre}, hoy recibirás una noticia que cambiará tu perspectiva.",
+            "{nombre}, alguien que no ves hace tiempo se cruzará en tu camino.",
+            "{nombre}, un pequeño reto pondrá a prueba tu paciencia.",
+            "{nombre}, una nueva oportunidad te abrirá puertas inesperadas.",
+            "{nombre}, confía en tu intuición, hoy será clave.",
+            "{nombre}, un gesto amable cambiará tu día y el de alguien más.",
+            "{nombre}, puede que te enfrentes a una decisión difícil, piensa bien antes de actuar.",
+            "{nombre}, un consejo de alguien mayor te será útil hoy.",
+            "{nombre}, un cambio en tu rutina traerá algo positivo.",
+            "{nombre}, algo que dabas por perdido volverá a ti.",
+            "{nombre}, hoy tendrás una conversación que te dejará pensando.",
+            "{nombre}, podrías encontrar un objeto que creías extraviado.",
+            "{nombre}, una coincidencia llamará tu atención y te hará sonreír.",
+            "{nombre}, un nuevo interés o pasatiempo despertará tu curiosidad.",
+            "{nombre}, un comentario inesperado te hará replantear algo importante.",
+            "{nombre}, una pequeña dificultad en la mañana se resolverá por la tarde.",
+            "{nombre}, una persona desconocida podría darte un buen consejo.",
+            "{nombre}, hoy es un día ideal para cerrar un ciclo pendiente.",
+            "{nombre}, recibirás un mensaje que cambiará tu estado de ánimo.",
+            "{nombre}, un recuerdo del pasado te hará reflexionar sobre el presente."
             ],
             amor: [
-                "{nombre}, alguien en quien no habías pensado está empezando a notar tu presencia.",
-                "{nombre}, un malentendido en el amor se aclarará pronto.",
-                "{nombre}, una conversación reveladora te hará ver las cosas de otra manera.",
-                "{nombre}, si tienes dudas sobre una relación, el tiempo te dará respuestas.",
-                "{nombre}, el amor puede sorprenderte cuando menos lo esperas.",
-                "{nombre}, una persona cercana te mostrará su apoyo incondicional.",
-                "{nombre}, evita reacciones impulsivas en temas sentimentales hoy.",
-                "{nombre}, un reencuentro inesperado te traerá emociones mezcladas.",
-                "{nombre}, si buscas señales, presta atención a los detalles.",
-                "{nombre}, alguien especial está esperando que des el primer paso.",
-                "{nombre}, una llamada cambiará el rumbo de tus sentimientos.",
-                "{nombre}, hoy podrías recibir una confesión inesperada.",
-                "{nombre}, una persona de tu entorno te observa con más interés del que imaginas.",
-                "{nombre}, en el amor, la paciencia será clave hoy.",
-                "{nombre}, evita comparar tu historia con la de los demás.",
-                "{nombre}, una decisión tomada hoy influirá en tu futuro sentimental.",
-                "{nombre}, alguien espera que muestres tus sentimientos con más claridad.",
-                "{nombre}, hoy podrías recibir una indirecta muy evidente.",
-                "{nombre}, un gesto romántico iluminará tu jornada.",
-                "{nombre}, el amor a veces llega cuando dejas de buscarlo."
+            "{nombre}, alguien en quien no habías pensado está empezando a notar tu presencia.",
+            "{nombre}, un malentendido en el amor se aclarará pronto.",
+            "{nombre}, una conversación reveladora te hará ver las cosas de otra manera.",
+            "{nombre}, si tienes dudas sobre una relación, el tiempo te dará respuestas.",
+            "{nombre}, el amor puede sorprenderte cuando menos lo esperas.",
+            "{nombre}, una persona cercana te mostrará su apoyo incondicional.",
+            "{nombre}, evita reacciones impulsivas en temas sentimentales hoy.",
+            "{nombre}, un reencuentro inesperado te traerá emociones mezcladas.",
+            "{nombre}, si buscas señales, presta atención a los detalles.",
+            "{nombre}, alguien especial está esperando que des el primer paso.",
+            "{nombre}, una llamada cambiará el rumbo de tus sentimientos.",
+            "{nombre}, hoy podrías recibir una confesión inesperada.",
+            "{nombre}, una persona de tu entorno te observa con más interés del que imaginas.",
+            "{nombre}, en el amor, la paciencia será clave hoy.",
+            "{nombre}, evita comparar tu historia con la de los demás.",
+            "{nombre}, una decisión tomada hoy influirá en tu futuro sentimental.",
+            "{nombre}, alguien espera que muestres tus sentimientos con más claridad.",
+            "{nombre}, hoy podrías recibir una indirecta muy evidente.",
+            "{nombre}, un gesto romántico iluminará tu jornada.",
+            "{nombre}, el amor a veces llega cuando dejas de buscarlo."
             ],
             trabajo: [
-                "{nombre}, un nuevo reto en el trabajo pondrá a prueba tus habilidades.",
-                "{nombre}, hoy podrías recibir un reconocimiento inesperado.",
-                "{nombre}, evita distracciones y concéntrate en lo importante.",
-                "{nombre}, una propuesta laboral interesante llegará pronto.",
-                "{nombre}, un cambio de planes podría beneficiarte más de lo que imaginas.",
-                "{nombre}, podrías sentirte abrumado, pero encontrarás apoyo en un colega.",
-                "{nombre}, revisa bien los detalles antes de presentar un proyecto.",
-                "{nombre}, no subestimes el poder del trabajo en equipo.",
-                "{nombre}, si estás esperando una respuesta laboral, pronto llegará una señal clara.",
-                "{nombre}, el esfuerzo de hoy traerá recompensas en el futuro.",
-                "{nombre}, evita decisiones apresuradas en el ámbito profesional.",
-                "{nombre}, un error menor te enseñará una lección valiosa.",
-                "{nombre}, alguien valorará tu dedicación más de lo que imaginas.",
-                "{nombre}, una nueva responsabilidad podría traerte un desafío interesante.",
-                "{nombre}, una conversación con un superior aclarará tus dudas.",
-                "{nombre}, una reunión inesperada abrirá nuevas oportunidades.",
-                "{nombre}, podrías notar que alguien en el trabajo admira tu esfuerzo.",
-                "{nombre}, revisa bien los números antes de tomar una decisión económica.",
-                "{nombre}, una idea que tenías podría empezar a tomar forma hoy.",
-                "{nombre}, el ambiente laboral será un factor clave en tu productividad."
+            "{nombre}, un nuevo reto en el trabajo pondrá a prueba tus habilidades.",
+            "{nombre}, hoy podrías recibir un reconocimiento inesperado.",
+            "{nombre}, evita distracciones y concéntrate en lo importante.",
+            "{nombre}, una propuesta laboral interesante llegará pronto.",
+            "{nombre}, un cambio de planes podría beneficiarte más de lo que imaginas.",
+            "{nombre}, podrías sentirte abrumado, pero encontrarás apoyo en un colega.",
+            "{nombre}, revisa bien los detalles antes de presentar un proyecto.",
+            "{nombre}, no subestimes el poder del trabajo en equipo.",
+            "{nombre}, si estás esperando una respuesta laboral, pronto llegará una señal clara.",
+            "{nombre}, el esfuerzo de hoy traerá recompensas en el futuro.",
+            "{nombre}, evita decisiones apresuradas en el ámbito profesional.",
+            "{nombre}, un error menor te enseñará una lección valiosa.",
+            "{nombre}, alguien valorará tu dedicación más de lo que imaginas.",
+            "{nombre}, una nueva responsabilidad podría traerte un desafío interesante.",
+            "{nombre}, una conversación con un superior aclarará tus dudas.",
+            "{nombre}, una reunión inesperada abrirá nuevas oportunidades.",
+            "{nombre}, podrías notar que alguien en el trabajo admira tu esfuerzo.",
+            "{nombre}, revisa bien los números antes de tomar una decisión económica.",
+            "{nombre}, una idea que tenías podría empezar a tomar forma hoy.",
+            "{nombre}, el ambiente laboral será un factor clave en tu productividad."
             ],
             dinero: [
-                "{nombre}, revisa bien tus gastos antes de hacer una compra importante.",
-                "{nombre}, un ingreso inesperado podría mejorar tu día.",
-                "{nombre}, evita hacer inversiones impulsivas hoy.",
-                "{nombre}, una oportunidad económica interesante se presentará pronto.",
-                "{nombre}, alguien te dará un consejo financiero valioso.",
-                "{nombre}, controla mejor tu presupuesto, podrías ahorrar más de lo que crees.",
-                "{nombre}, un error en tus cuentas podría causarte un pequeño problema.",
-                "{nombre}, si debes dinero, pronto podrías encontrar la manera de saldarlo.",
-                "{nombre}, evita prestar dinero sin garantías hoy.",
-                "{nombre}, una oferta tentadora podría no ser lo que parece.",
-                "{nombre}, una compra impulsiva podría traerte arrepentimiento.",
-                "{nombre}, un pequeño sacrificio financiero hoy te dará frutos mañana.",
-                "{nombre}, podrías recibir una ayuda económica de una fuente inesperada.",
-                "{nombre}, evita los gastos innecesarios en cosas superficiales.",
-                "{nombre}, un análisis detallado de tus cuentas te dará claridad.",
-                "{nombre}, podrías descubrir una nueva fuente de ingresos.",
-                "{nombre}, hoy es un buen día para organizar tu economía.",
-                "{nombre}, un viejo hábito financiero podría traerte problemas si no lo controlas.",
-                "{nombre}, evita firmar acuerdos financieros sin leer la letra pequeña.",
-                "{nombre}, una conversación sobre dinero te hará replantear tus prioridades."
+            "{nombre}, revisa bien tus gastos antes de hacer una compra importante.",
+            "{nombre}, un ingreso inesperado podría mejorar tu día.",
+            "{nombre}, evita hacer inversiones impulsivas hoy.",
+            "{nombre}, una oportunidad económica interesante se presentará pronto.",
+            "{nombre}, alguien te dará un consejo financiero valioso.",
+            "{nombre}, controla mejor tu presupuesto, podrías ahorrar más de lo que crees.",
+            "{nombre}, un error en tus cuentas podría causarte un pequeño problema.",
+            "{nombre}, si debes dinero, pronto podrías encontrar la manera de saldarlo.",
+            "{nombre}, evita prestar dinero sin garantías hoy.",
+            "{nombre}, una oferta tentadora podría no ser lo que parece.",
+            "{nombre}, una compra impulsiva podría traerte arrepentimiento.",
+            "{nombre}, un pequeño sacrificio financiero hoy te dará frutos mañana.",
+            "{nombre}, podrías recibir una ayuda económica de una fuente inesperada.",
+            "{nombre}, evita los gastos innecesarios en cosas superficiales.",
+            "{nombre}, un análisis detallado de tus cuentas te dará claridad.",
+            "{nombre}, podrías descubrir una nueva fuente de ingresos.",
+            "{nombre}, hoy es un buen día para organizar tu economía.",
+            "{nombre}, un viejo hábito financiero podría traerte problemas si no lo controlas.",
+            "{nombre}, evita firmar acuerdos financieros sin leer la letra pequeña.",
+            "{nombre}, una conversación sobre dinero te hará replantear tus prioridades."
             ]
         };
-
+        
         const imagenesCategorias = {
             general: "https://cdn-icons-png.flaticon.com/512/12282/12282443.png",
             amor: "https://cdn-icons-png.flaticon.com/512/9484/9484251.png",
